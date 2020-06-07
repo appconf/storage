@@ -3,6 +3,8 @@ package storage
 import (
 	"fmt"
 	"sync"
+
+	"github.com/appconf/log"
 )
 
 //Data 配置存储器与Engine之间的交流数据
@@ -14,7 +16,7 @@ type Data struct {
 
 //Driver 自定义Storage需要实现此接口进行注册
 type Driver interface {
-	Open(map[string]interface{}) (Storage, error)
+	Open(log.Logger, map[string]interface{}) (Storage, error)
 }
 
 //Storage 配置存储器的接口
@@ -58,7 +60,7 @@ func List() (s []string) {
 }
 
 //New 根据name从已注册的storages获取对应的构造函数，创建storage
-func New(name string, cfg map[string]interface{}) (Storage, error) {
+func New(name string, logger log.Logger, cfg map[string]interface{}) (Storage, error) {
 	storagesLock.Lock()
 	defer storagesLock.Unlock()
 
@@ -67,5 +69,5 @@ func New(name string, cfg map[string]interface{}) (Storage, error) {
 		return nil, fmt.Errorf("storage: not found storage %s", name)
 	}
 
-	return driver.Open(cfg)
+	return driver.Open(logger, cfg)
 }
