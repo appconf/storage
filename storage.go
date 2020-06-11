@@ -11,7 +11,6 @@ import (
 type Data struct {
 	Key   string
 	Value interface{}
-	Err   error
 }
 
 //Driver 自定义Storage需要实现此接口进行注册
@@ -22,7 +21,7 @@ type Driver interface {
 //Storage 配置存储器的接口
 type Storage interface {
 	//Get 获取指定keys的信息
-	Get(keys []string) (ch chan []Data, err error)
+	Get(keys []string) (dataCh chan []Data, err error)
 	//Stop 停止Storage
 	Stop() error
 	//Success 当key所在模板更新成功时使用此接口进行通知

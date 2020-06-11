@@ -91,26 +91,13 @@ func (s *Storage) getData(keys []string) []storage.Data {
 	data := make([]storage.Data, 0)
 	values, err := s.rc.MGet(keys...).Result()
 	if err != nil {
-		for _, key := range keys {
-			data = append(data, storage.Data{
-				Key:   key,
-				Value: nil,
-				Err:   err,
-			})
-		}
+		s.log.Errorf("redis storage failed to get data, error: %v", err)
 	} else {
 		for idx, key := range keys {
-			if values[idx] == redis.Nil {
-				data = append(data, storage.Data{
-					Key:   key,
-					Value: nil,
-					Err:   nil,
-				})
-			} else {
+			if values[idx] != redis.Nil {
 				data = append(data, storage.Data{
 					Key:   key,
 					Value: values[idx],
-					Err:   nil,
 				})
 			}
 		}

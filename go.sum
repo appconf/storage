@@ -1,2 +1,6 @@
 github.com/appconf/log v0.0.0-20200607142500-ab2ebbe69bf3 h1:7+7GARndk74XZ8v4R4mdW7500sLsZaAjaNwKBGgCwqY=
 github.com/appconf/log v0.0.0-20200607142500-ab2ebbe69bf3/go.mod h1:E2UFQ+LU+QkCIfblDlhEYoiLb1L6L810PELUIVQpNd8=
+github.com/go-redis/redis v6.15.8+incompatible h1:BKZuG6mCnRj5AOaWJXoCgf6rqTYnYJLe4en2hxT7r9o=
+github.com/go-redis/redis v6.15.8+incompatible/go.mod h1:NAIEuMOZ/fxfXJIrKDQDz8wamY7mA7PouImQ2Jvg6kA=
+github.com/mitchellh/mapstructure v1.3.2 h1:mRS76wmkOn3KkKAyXDu42V+6ebnXWIztFSYGN7GeoRg=
+github.com/mitchellh/mapstructure v1.3.2/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
